@@ -52,7 +52,8 @@ export const logIn = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("User logged in:", userCredential.user);
+    return userCredential.user; // Return the user for further use if needed
   } catch (error) {
-    console.error("Error logging in:", error.message);
+    throw new Error(error.message); // Throw error for handling in component
   }
 };
