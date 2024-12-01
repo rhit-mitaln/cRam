@@ -1,62 +1,105 @@
-import React, { useState } from "react"; // Import React and useState hook
-import { logIn } from "../firebase"; // Import the logIn function from the firebase module
+import React, { useState } from "react"; 
+import { Eye, EyeOff } from 'lucide-react';
+import { logIn } from "../firebase"; 
+import "./login.css"
 
 const Login = () => {
-    // Creating state for email, password, and error messages
-    const [email, setEmail] = useState(''); // Initialize email state
-    const [password, setPassword] = useState(''); // Initialize password state
-    const [error, setError] = useState(''); // Initialize error state
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-    // Handling form submission
-    const handleLogin = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
-        setError(''); // Clear any previous error messages
-        try {
-            await logIn(email, password); // Call logIn with the entered email and password
-        } catch (err) {
-            setError(err.message); // Set error message if login fails
-        }
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await logIn(email, password);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
-    return (
-        <div className="login-container"> {/* Main container for the login form */}
-            <div className="panel"> {/* Left panel for logo and tagline */}
-                <div className="logo-container"> {/* Container for logo and tagline */}
-                    <h2 className="logo">cRam</h2> {/* Logo */}
-                    <h3 className="tagline">Your Tagline Here</h3> {/* Tagline below the logo */}
-                </div>
-            </div>
-            <div className="login-elements"> {/* Right side for login form */}
-                <div id="login-header">
-                    Login
-                </div>
-                <div id="login-subhead">
-                    Enter your credentials to log in.
-                </div>
-                {error && <div className="error-message">{error}</div>} {/* Show error message if exists */}
-                <form onSubmit={handleLogin}> {/* Form that triggers handleLogin on submission */}
-                    <input 
-                        type="email" 
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} // Update email state on change
-                        required
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} // Update password state on change
-                        required
-                    />
-                    <button type="submit">Log me in!</button> {/* Submit button for the form */}
-                </form>
-                <div className="foot-login">
-                    2024 cRam
-                </div>
-            </div>
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  
+
+  return (
+    <div className="login-page">
+      {/* Left Panel */}
+      <div className="left-panel">
+        <div id="cramMobile">
+            <h2>cRam</h2>
+            <p>Cram your college needs in one place</p>
         </div>
-    );
+        <div className="branding">
+          <h1>Login</h1>
+          <p>Enter your credentials to access your account</p>
+        </div>
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="input-group">
+            <div className="boxTitle">
+            <label htmlFor="email">Email address</label>
+            </div>
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group password-input">
+            <div className="boxTitle" id="passwordLabel"> 
+                <label htmlFor="password">Password</label>
+                <a href="#" id="forgot">forgot password</a>
+            </div>
+            <div className="password-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button 
+                type="button" 
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff size={20} outline="#0066ff" className="password-icon" />
+                ) : (
+                  <Eye size={20} outline="#0066ff" className="password-icon"/>
+                )}
+              </button>
+            </div>
+          </div>
+          {error && <div className="error-message">{error}</div>}
+          <div className="form-actions">
+            <button type="submit" className="login-btn">Log me in!</button>
+          </div>
+        </form>
+        <div className="footer">
+          Don't have an account? <a href="/signup" id="signup">Sign up</a>
+        </div>
+        
+    </div>
+      
+      {/* Right Panel */}
+      <div className="right-panel">
+        <div className="illustration">
+          <h2>cRam</h2>
+          <p>Cram your college needs in one place</p>
+          {/* Add an image or illustration here */}
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default Login; // Export the Login component for use in other parts of the application
+export default Login;
