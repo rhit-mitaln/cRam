@@ -22,9 +22,6 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
-  //this is a comment
-
   
 
   return (
