@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { logIn } from "../firebase"; 
 import "./login.css"
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,26 +20,24 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setEmailError(false);
-    setPasswordError(false); // Reset error states
-  
+    setPasswordError(false); // Reset all error states
+
     try {
         await logIn(email, password);
-        console.log('Login successful!'); // Log success for now
+        console.log('Login successful!');
     } catch (err) {
-        console.error("Firebase Error:", err); // Log the entire error object
+        console.error("Login Error:", err); // Debug log for the error object
 
-        // Check the error message or code to provide specific feedback
-        if (err.code === 'auth/user-not-found') {
-            setEmailError(true);
-            setError("No user found with this email.");
-        } else if (err.code === 'auth/wrong-password') {
-            setPasswordError(true);
-            setError("Incorrect password.");
-        } else {
-            setError("An error occurred. Please try again."); // General error message
-        }
+        // Set both error states to true for any error
+        setEmailError(true);
+        setPasswordError(true);
+        setError("An error occurred. Please check your credentials and try again.");
     }
-  };
+};
+
+
+
+
 
   return (
     <div className="login-page">
@@ -63,8 +62,9 @@ const Login = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (emailError) setEmailError(false); // Reset error when typing
+                  setEmail(e.target.value);
+                  setEmailError(false); // Reset border color when typing
+                  setPasswordError(false); // Ensure both fields reset borders
                 }}
                 className={emailError ? 'error-border' : ''} // Apply error class if there's an error
                 required
@@ -82,8 +82,9 @@ const Login = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => {
-                    setPassword(e.target.value);
-                    if (passwordError) setPasswordError(false); // Reset error when typing
+                setPassword(e.target.value);
+                setEmailError(false); // Ensure both fields reset borders
+                setPasswordError(false); // Reset border color when typing
               }}
               className={passwordError ? 'error-border' : ''} // Apply error class if there's an error
               required
