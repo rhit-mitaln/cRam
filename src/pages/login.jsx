@@ -31,7 +31,7 @@ const Login = () => {
         // Set both error states to true for any error
         setEmailError(true);
         setPasswordError(true);
-        setError("An error occurred. Please check your credentials and try again.");
+        setError("Your email/password is incorrect. Please recheck your credentials and try again.");
     }
 };
 
