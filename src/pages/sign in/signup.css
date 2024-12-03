@@ -1,0 +1,137 @@
+/* Overall Layout */
+.signup-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, #0066ff, #69a5ff);
+  background-size: 200% 200%;
+  animation: gradient-bg 6s infinite;
+  font-family: "Poppins";
+  padding: 1rem;
+}
+
+/* Moving Gradient */
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Card Layout */
+.signup-card {
+  background: transparent;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: none; /* Remove shadow to eliminate box outline */
+  width: 100%;
+  max-width: 100vw;
+  text-align: center;
+  position: relative;
+  transform: translateY(-40px);
+}
+
+.logo {
+  font-size: 40px;
+  transform: translateY(-60px);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.footer {
+  font-size: 12px;
+}
+
+.step-title {
+  font-size: 50px;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  color: #dddddd;
+  margin-bottom: 1.5 rem;
+}
+
+.input-field {
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.9375rem;
+  font-size: 12px;
+  max-width: 500px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.step-actions button {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0 0.5rem;
+  width: 100px;
+  border: none;
+  border-radius: 0.9375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.next-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.prev-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.submit-btn {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0066ff;
+}
+
+.next-btn:hover,
+.submit-btn:hover,
+.prev-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+  color: #0066ff;
+}
+
+.bottom-text {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px; /* Adjust font size as needed */
+  color: #d1d1d1; /* Grey-ish color */
+}
+

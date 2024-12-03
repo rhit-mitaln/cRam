@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 //for email/pass authentication
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -56,4 +57,19 @@ export const logIn = async (email, password) => {
   } catch (error) {
     throw new Error(error.message); // Throw error for handling in component
   }
+};
+
+//sign up function
+export const createUser = async (email, password, additionalData) => {
+  const auth = getAuth();
+  const db = getDatabase();
+
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
+
+  // Store additional data in Firebase Realtime Database
+  await set(ref(db, `users/${user.uid}`), {
+    email: user.email,
+    ...additionalData,
+  });
 };

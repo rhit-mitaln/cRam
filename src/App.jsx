@@ -4,14 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import React from 'react'
 import { logIn, signUp } from './firebase'
-import Login from './pages/login'
+import Login from './pages/login/login'
+import Signup from './pages/sign in/signup'
 
 function App() {
 
   return (
     
     <div className='App'>
-      <Login />
+      <Signup />
     </div>
     
     /*<div>

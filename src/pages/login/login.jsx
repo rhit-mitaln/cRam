@@ -1,12 +1,12 @@
 import React, { useState } from "react"; 
 import { Eye, EyeOff } from 'lucide-react';
-import { logIn } from "../firebase"; 
-import "./login.css"
-
+import { logIn } from "../../firebase"; 
+import "./login.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); // State for password confirmation
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -27,17 +27,11 @@ const Login = () => {
         console.log('Login successful!');
     } catch (err) {
         console.error("Login Error:", err); // Debug log for the error object
-
-        // Set both error states to true for any error
         setEmailError(true);
         setPasswordError(true);
         setError("Your email/password is incorrect. Please recheck your credentials and try again.");
     }
 };
-
-
-
-
 
   return (
     <div className="login-page">
@@ -54,42 +48,41 @@ const Login = () => {
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
             <div className="boxTitle">
-            <label htmlFor="email">Email address</label>
+              <label htmlFor="email">Email address</label>
             </div>
             <input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError(false); // Reset border color when typing
-                  setPasswordError(false); // Ensure both fields reset borders
-                }}
-                className={emailError ? 'error-border' : ''} // Apply error class if there's an error
-                required
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError(false); // Reset border color when typing
+                setPasswordError(false); // Ensure both fields reset borders
+              }}
+              className={emailError ? 'error-border' : ''} // Apply error class if there's an error
+              required
             />
           </div>
           <div className="input-group password-input">
             <div className="boxTitle" id="passwordLabel"> 
-                <label htmlFor="password">Password</label>
-                <a href="#" id="forgot">forgot password</a>
+              <label htmlFor="password">Password</label>
+              <a href="#" id="forgot">forgot password</a>
             </div>
             <div className="password-wrapper">
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setEmailError(false); // Ensure both fields reset borders
-                setPasswordError(false); // Reset border color when typing
-              }}
-              className={passwordError ? 'error-border' : ''} // Apply error class if there's an error
-              required
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setEmailError(false); // Ensure both fields reset borders
+                  setPasswordError(false); // Reset border color when typing
+                }}
+                className={passwordError ? 'error-border' : ''} // Apply error class if there's an error
+                required
               />
-              
               <button 
                 type="button" 
                 className="password-toggle"
@@ -112,8 +105,7 @@ const Login = () => {
         <div className="footer">
           Don't have an account? <a href="/signup" id="signup">Sign up</a>
         </div>
-        
-    </div>
+      </div>
       
       {/* Right Panel */}
       <div className="right-panel">
@@ -123,6 +115,9 @@ const Login = () => {
           {/* Add an image or illustration here */}
         </div>
       </div>
+
+      {/* Small grey text at the bottom */}
+      <div className="bottom-text">2024 cRam</div>
     </div>
   );
 };
