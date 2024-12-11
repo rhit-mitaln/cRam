@@ -4,30 +4,24 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import React from 'react'
 import { logIn, signUp } from './firebase'
-import Login from './pages/login/login'
-import Signup from './pages/sign in/signup'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/login/login';
+import SignUp from './pages/sign in/signup';
+import CramDashboard from './pages/Dashboard/dashboard';
 
 function App() {
-
   return (
+    /*<Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<CramDashboard />} />
+      </Routes>
+    </Router> */
     
-    <div className='App'>
-      <Signup />
-    </div>
-    
-    /*<div>
+      <CramDashboard />
       
-      <button onClick={() => signUp("test@example.com", "password")}>
-        Sign Up
-      </button>
-      <button onClick={() => logIn("test@example.com", "password")}>
-        Test Login
-      </button>
-    </div>
-    */
-  )
-
-
+  );
 }
 
 export default App

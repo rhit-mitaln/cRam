@@ -1,0 +1,314 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+#dashboard {
+  width: 100vw;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.overlay-visible {
+  background: linear-gradient(120deg, #0066ff, #ffffff);
+  background-size: 200% 200%;
+  animation: gradient-bg 6s infinite;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-visible h2 {
+  font-size: 150px;
+}
+
+.overlay-hidden {
+  background: white;
+  color: black;
+}
+
+#overlay-content {
+  text-align: center;
+}
+
+
+#dashboard-content {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+#top {
+  flex: 2;
+  padding: 20px;
+  background: linear-gradient(120deg, #005ce6, #5f97eb, #0066ff); 
+  background-size: 200% 200%;
+  animation: gradient-animation-subtle 8s infinite;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@keyframes gradient-animation-subtle {
+  0% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 60% 50%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+#main {
+  flex: 4.5;
+  height: 300vh;
+  background-color: #ffffff;
+}
+
+#top-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+#top-header h2 {
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
+#accounts {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#top-main {
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  flex: 3;
+}
+
+#top-main h1 {
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  margin: 0;
+  margin-left: 20%;
+}
+
+#top-main-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  padding-top: -22%;
+  margin: 0;
+}
+
+#top-main-right {
+  flex: 1;
+}
+
+#top-date {
+  background-color: #ff0000;
+  margin-left: 20%;
+  padding: 2% 2.5%;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 0.9375rem;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*SCHEDULER CSS*/
+.weekly-scheduler {
+  font-family: 'Poppins', Arial, sans-serif;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color: #333;
+}
+
+.week-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.week-navigation button {
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.week-navigation button:hover {
+  background-color: #0052cc;
+}
+
+h1 {
+  text-align: center;
+  color: #0066ff;
+  margin-bottom: 20px;
+}
+
+.current-month-year {
+  text-align: center;
+  font-weight: bold;
+  color: #0066ff;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.week-view {
+  display: flex;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.day-column {
+  flex: 1;
+  min-width: 120px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.day-column:last-child {
+  border-right: none;
+}
+
+.day-header {
+  background-color: #f0f8ff;
+  color: #0066ff;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #0066ff;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-header .weekday {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.day-header .date {
+  font-size: 1.1em;
+}
+
+.time-slots {
+  height: 1440px; /* 24 hours * 60 minutes */
+}
+
+.time-slot {
+  height: 60px;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.time-slot:hover {
+  background-color: #f0f8ff;
+}
+
+.event {
+  background-color: #0066ff;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hour-labels {
+  width: 60px;
+  margin-right: 10px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  padding-top: 44px; /* Increased padding to align with day headers */
+}
+
+.hour-label {
+  height: 60px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 5px;
+  font-size: 12px;
+  color: #666;
+  position: relative;
+  top: -10px;
+}
+
+.hour-label.last-hour {
+  order: 1;
+}
+
+.current-time-line {
+  position: absolute;
+  left: 70px;
+  right: 0;
+  height: 2px;
+  background-color: #ff0000;
+  z-index: 10;
+}

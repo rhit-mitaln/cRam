@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from 'lucide-react';
 import { logIn } from "../../firebase"; 
 import "./login.css";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+    const navigate = useNavigate();
   
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -25,6 +27,7 @@ const Login = () => {
     try {
         await logIn(email, password);
         console.log('Login successful!');
+        navigate('/dashboard');
     } catch (err) {
         console.error("Login Error:", err); // Debug log for the error object
         setEmailError(true);

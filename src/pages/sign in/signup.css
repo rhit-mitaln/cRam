@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(120deg, #0066ff, #69a5ff);
+  background: linear-gradient(120deg, #0066ff, #91bdff);
   background-size: 200% 200%;
   animation: gradient-bg 6s infinite;
   font-family: "Poppins";
@@ -41,6 +41,7 @@
   font-size: 40px;
   transform: translateY(-60px);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  color: #ffffff;
 }
 
 .footer {
